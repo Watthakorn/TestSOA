@@ -1,0 +1,31 @@
+  <div style="margin-left: 50px; margin-right: 50px">
+  <table class='table'>
+  <thead>
+    <tr>
+      <th>fname</th>
+      <th>lname</th>
+      <th>email</th>
+      <th>password</th>
+      <th>role</th>
+      <td></td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.fname}}</td>
+      <td>{{user.lname}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.password}}</td>
+      <td>{{user.role}}</td>
+      <div *ngIf="user.role === 'user'" >
+      <td> <button (click)="changerole(user.id)" class="button is-success">Success</button></td>
+      </div>
+      <div *ngIf="user.role === 1" >
+      <td>  </td>
+      </div>
+      <td> <button (click)="deleteById(user.id)" class="button is-danger">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+  </div>

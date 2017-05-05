@@ -1,0 +1,48 @@
+<div class="container">
+  <h2 class="title is-2 has-text-centered">รายการจองสนาม</h2>
+  <div class="tabs is-toggle is-fullwidth">
+  <ul>
+    <li (click)="reserveMode(0)" class="is-active">
+      <a>
+        <span>การจองปัจจุบัน</span>
+      </a>
+    </li>
+    <li (click)="reserveMode(1)">
+      <a>
+        <span>ประวัติการจอง</span>
+      </a>
+    </li>
+  </ul>
+</div>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>ลำดับที่</th>
+      <th>สนาม</th>
+      <th>สนามย่อย</th>
+      <th>วันที่</th>
+      <th>เวลา</th>
+      <th>สถานะ</th>
+    </tr>
+    
+  </thead>
+  <tbody>
+    <tr *ngFor="let sodemacom of reservelist; let i = index">
+      <td>{{ i+1 }}</td>
+      <td>{{ soma[sodemacom.reserv_field_id-1] }}</td>
+      <td>{{ sodemacom.reserv_ex_id}}</td>
+      <td>{{ sodemacom.reserv_date | date:"dd/MM/yyyy" }}</td>
+      <td>{{ sodemacom.reserv_start_time }}:00-{{ sodemacom.reserv_end_time }}:00</td>
+      <td *ngIf="sodemacom.reserv_status == 'pending'">
+        <span class="tag is-warning is-medium">รอการยืนยัน</span>      
+      </td>
+      <td *ngIf="sodemacom.reserv_status == 'confirm'">
+        <span class="tag is-success is-medium">เรียบร้อย</span>      
+      </td>
+      <td *ngIf="sodemacom.reserv_status == 'decline'">
+        <span class="tag is-danger is-medium">ยกเลิก</span>      
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
